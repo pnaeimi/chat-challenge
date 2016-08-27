@@ -1,9 +1,6 @@
-# chat-challenge
-A simple Chat API
+# chat-challenge 
+A simple Chat API using C#, .Net, and Entity Framework. Implements following end points:
 
-Framewrok: C#, .Net, Entity Framework
-
-Implements following end points
 ### User
 - Get list of users: [GET] api/users
 - Get a specific user by user id: [GET] api/users/{userId}
