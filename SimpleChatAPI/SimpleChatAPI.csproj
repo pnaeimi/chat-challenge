@@ -183,18 +183,15 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ChatsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608270021038_chat.cs" />
-    <Compile Include="Migrations\201608270021038_chat.Designer.cs">
-      <DependentUpon>201608270021038_chat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608270030231_chat1.cs" />
-    <Compile Include="Migrations\201608270030231_chat1.Designer.cs">
-      <DependentUpon>201608270030231_chat1.cs</DependentUpon>
+    <Compile Include="Migrations\201608272138303_init.cs" />
+    <Compile Include="Migrations\201608272138303_init.Designer.cs">
+      <DependentUpon>201608272138303_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Chat.cs" />
@@ -204,7 +201,9 @@
     <Compile Include="Repository\AppContext.cs" />
     <Compile Include="Repository\ChatRepository.cs" />
     <Compile Include="Repository\Interface\IChatRepository.cs" />
+    <Compile Include="Repository\Interface\IMessageRepository.cs" />
     <Compile Include="Repository\Interface\IUserRepository.cs" />
+    <Compile Include="Repository\MessageRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -326,11 +325,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608270021038_chat.resx">
-      <DependentUpon>201608270021038_chat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608270030231_chat1.resx">
-      <DependentUpon>201608270030231_chat1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608272138303_init.resx">
+      <DependentUpon>201608272138303_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

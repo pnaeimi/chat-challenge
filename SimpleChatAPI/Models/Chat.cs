@@ -11,13 +11,15 @@ namespace SimpleChatAPI.Models
 
         public string Name { get; set; }
 
-        //TODO: Foreign Key to Users
-        public int UserIdFrom { get; set; }
+        public int FromUserId { get; set; }
 
-        //TODO: Foreign Key to Users
-        public int UserIdTo { get; set; }
+        public int ToUserId { get; set; }
 
         public DateTime Created { get; set; }
+
+        public virtual User FromUser { get; set; }
+
+        public virtual User ToUser { get; set; }
 
     }
 }

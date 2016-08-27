@@ -3,40 +3,36 @@ using SimpleChatAPI.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http;
 
 namespace SimpleChatAPI.Repository
 {
-    public class ChatRepository : IChatRepository
+    public class MessageRepository : IMessageRepository
     {
-
         private AppContext appContext = null;
         private bool disposed = false;
 
-        public ChatRepository()
+        public MessageRepository()
         {
             appContext = new AppContext();
         }
 
-        public ChatRepository(AppContext appContext)
+        public MessageRepository(AppContext appContext)
         {
             this.appContext = appContext; 
         }
-
-        public IEnumerable<Chat> GetChats(int userId)
-        {
-            return appContext.Chats.Where(c => c.FromUserId == userId).ToList();
+        
+     
+        public IEnumerable<Message> GetMessages(int chatId)
+        { 
+            return appContext.Messages.Where(m => m.ChatId == chatId).ToList();
         }
 
-        public Chat GetChat(int userId, int chatId)
+        public void Create(int chatId, Message message)
         {
-            return appContext.Chats.FirstOrDefault(c => c.Id == chatId &&
-                                                        c.FromUserId == userId);
-        }
-
-        public void Create(int userId, Chat chat)
-        {
-            chat.FromUserId = userId;
-            appContext.Chats.Add(chat);
+            message.ChatId = chatId;
+            message.Created = DateTime.Now;
+            appContext.Messages.Add(message);
         }
 
         public void Save()

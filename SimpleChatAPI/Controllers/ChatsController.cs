@@ -24,12 +24,14 @@ namespace SimpleChatAPI.Controllers
         }
 
         // GET api/users/{userId}/chats
+        [Route("users/{userId}/chats")]
         public IEnumerable<Chat> Get(int userId)
         {
             return chatRepository.GetChats(userId);
         }
 
         // POST api/users/{userId}/chats
+        [Route("users/{userId}/chats")]
         public HttpResponseMessage Post(int userId, Chat chat)
         {
             chatRepository.Create(userId, chat);
