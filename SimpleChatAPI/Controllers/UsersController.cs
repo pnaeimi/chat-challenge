@@ -36,7 +36,7 @@ namespace SimpleChatAPI.Controllers
         }
 
         // POST api/users
-        public HttpResponseMessage Post([FromBody]User user)
+        public HttpResponseMessage Post(User user)
         {
             //Check for user existence
             if (user.Password.Equals(user.Confirm))
@@ -52,7 +52,7 @@ namespace SimpleChatAPI.Controllers
         }
 
         // PUT api/users/5
-        public HttpResponseMessage Put(int id, [FromBody]User user)
+        public HttpResponseMessage Put(int id, User user)
         {
             user.Id = id;
             userRepository.Update(user);

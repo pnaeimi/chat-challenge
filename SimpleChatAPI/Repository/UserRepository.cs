@@ -3,6 +3,7 @@ using SimpleChatAPI.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 
 namespace SimpleChatAPI.Repository
@@ -10,53 +11,53 @@ namespace SimpleChatAPI.Repository
  public class UserRepository : IUserRepository
     {
 
-        private ChatContext chatContext = null;
+        private AppContext appContext = null;
         private bool disposed = false;
 
         public UserRepository()
         {
-            chatContext = new ChatContext();        
+            appContext = new AppContext();        
         }
 
-        public UserRepository(ChatContext chatContext)
+        public UserRepository(AppContext appContext)
         {
-            this.chatContext = chatContext;
+            this.appContext = appContext;
         }
         
         public IEnumerable<User> GetUsers()
         {
-            return chatContext.Users.ToList();
+            return appContext.Users.ToList();
         }
 
         public User Get(int id)
         {
-            return chatContext.Users.Find(id);
+            return appContext.Users.Find(id);
         }
        
         public void Add(User user)
         {
-            chatContext.Users.Add(user);
+            appContext.Users.Add(user);
         }
 
         public void Delete(int id)
         {
-            User user = chatContext.Users.Find(id);
-            chatContext.Users.Remove(user);
+            User user = appContext.Users.Find(id);
+            appContext.Users.Remove(user);
         }
 
         public void Update(User user)
         {
-            chatContext.Entry(user).State = EntityState.Modified;
+            appContext.Entry(user).State = EntityState.Modified;
         }
 
         public void Save()
         {
-            chatContext.SaveChanges();
+            appContext.SaveChanges();
         }
 
         public User Authenticate(User user)
         {
-            return chatContext.Users.Where(u => u.EmailAddress == user.EmailAddress && 
+            return appContext.Users.Where(u => u.EmailAddress == user.EmailAddress && 
                                                 u.Password == user.Password)
                                     .FirstOrDefault();
         }
@@ -67,7 +68,7 @@ namespace SimpleChatAPI.Repository
             {
                 if (disposing)
                 {
-                    chatContext.Dispose();
+                    appContext.Dispose();
                 }
             }
             this.disposed = true;
