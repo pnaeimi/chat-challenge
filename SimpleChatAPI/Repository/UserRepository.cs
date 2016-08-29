@@ -33,7 +33,12 @@ namespace SimpleChatAPI.Repository
         {
             return appContext.Users.Find(id);
         }
-       
+
+        public bool GetByEmail(string emailAddress)
+        {
+            return appContext.Users.Any(u => u.EmailAddress == emailAddress);
+        }
+   
         public void Add(User user)
         {
             appContext.Users.Add(user);
@@ -57,8 +62,9 @@ namespace SimpleChatAPI.Repository
 
         public User Authenticate(User user)
         {
+
             return appContext.Users.Where(u => u.EmailAddress == user.EmailAddress && 
-                                                u.Password == user.Password)
+                                               u.Password == user.Password)
                                     .FirstOrDefault();
         }
 

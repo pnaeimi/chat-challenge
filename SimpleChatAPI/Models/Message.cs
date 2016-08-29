@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SimpleChatAPI.Models
@@ -8,7 +9,11 @@ namespace SimpleChatAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required]
         public string MessageText { get; set; }
+
+        [Required]
+        public int Direction { get; set; }
 
         public DateTime Created { get; set; }
 

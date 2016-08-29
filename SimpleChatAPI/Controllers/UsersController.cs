@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System;
 
 namespace SimpleChatAPI.Controllers
 {
@@ -38,14 +39,14 @@ namespace SimpleChatAPI.Controllers
         // POST api/users
         public HttpResponseMessage Post(User user)
         {
-            //Check for user existence
+            if(userRepository.GetByEmail(user.EmailAddress))
+                return Request.CreateErrorResponse(HttpStatusCode.Forbidden, ModelState);
+
             if (user.Password.Equals(user.Confirm))
             {
                 userRepository.Add(user);
                 userRepository.Save();
-                var response = Request.CreateResponse<User>(HttpStatusCode.Created, user);
-
-                return response;
+                return Request.CreateResponse<User>(HttpStatusCode.Created, user);
             }
 
             return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
@@ -68,6 +69,22 @@ namespace SimpleChatAPI.Controllers
             userRepository.Delete(id);
             userRepository.Save();
         }
+        
+        // Login api/users/login
+        /*
+        [ActionName("login")]
+        public HttpResponseMessage PostLogin(User user)
+        {
+            var existingUser = userRepository.Authenticate(user);
+            if (existingUser == null)
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ModelState);
+
+            string token = Guid.NewGuid().ToString();
+            existingUser.BearerToken = token;
+            userRepository.Update(existingUser);
+            return Request.CreateResponse<User>(HttpStatusCode.Created, existingUser);
+        }
+        */
 
         protected override void Dispose(bool disposing)
         {

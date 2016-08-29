@@ -8,6 +8,7 @@ namespace SimpleChatAPI.Repository.Interface
     {
         IEnumerable<User> GetUsers();
         User Get(int id);
+        bool GetByEmail(string emailAddress);
         void Add(User user);
         void Delete(int id);
         void Update(User user);
