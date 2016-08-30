@@ -16,5 +16,5 @@ A simple Chat API using C#, .Net, and Entity Framework. Implements following end
 - Get list of messages by user id and chat id: [GET] api/users/{userId}/chats/{chatId}/messages
 - Create a new message: [POST] api/users/{userId}/chats/{chatId}/messages
 
-### API Help
-- /help
+### Help
+- API help: [GET]/help
