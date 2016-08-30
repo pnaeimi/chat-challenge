@@ -17,4 +17,4 @@ A simple Chat API using C#, .Net, and Entity Framework. Implements following end
 - Create a new message: [POST] api/users/{userId}/chats/{chatId}/messages
 
 ### Help
-- API help: [GET]/help
+- API help: [GET] help
