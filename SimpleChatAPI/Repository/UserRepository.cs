@@ -34,9 +34,14 @@ namespace SimpleChatAPI.Repository
             return appContext.CUsers.Find(id);
         }
 
-        public bool GetByEmail(string emailAddress)
+        public bool CheckByEmail(string emailAddress)
         {
             return appContext.CUsers.Any(u => u.EmailAddress == emailAddress);
+        }
+
+        public bool CheckByToken(string bearerToken)
+        {
+            return appContext.CUsers.Any(u => u.BearerToken == bearerToken);
         }
    
         public void Add(User user)

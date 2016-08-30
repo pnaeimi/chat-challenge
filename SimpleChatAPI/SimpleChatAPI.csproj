@@ -240,6 +240,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AuthenticateFilter.cs" />
     <Compile Include="Controllers\ChatsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
@@ -267,6 +268,14 @@
     <Compile Include="Migrations\201608292127559_m3.cs" />
     <Compile Include="Migrations\201608292127559_m3.Designer.cs">
       <DependentUpon>201608292127559_m3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608300339558_m4.cs" />
+    <Compile Include="Migrations\201608300339558_m4.Designer.cs">
+      <DependentUpon>201608300339558_m4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608300619299_m5.cs" />
+    <Compile Include="Migrations\201608300619299_m5.Designer.cs">
+      <DependentUpon>201608300619299_m5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Chat.cs" />
@@ -414,6 +423,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608292127559_m3.resx">
       <DependentUpon>201608292127559_m3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608300339558_m4.resx">
+      <DependentUpon>201608300339558_m4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608300619299_m5.resx">
+      <DependentUpon>201608300619299_m5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

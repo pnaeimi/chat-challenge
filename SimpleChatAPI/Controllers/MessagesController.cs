@@ -29,6 +29,7 @@ namespace SimpleChatAPI.Controllers
 
         // GET api/users/{userId}/chats/{chatId}/messages
         [Route("users/{userId}/chats/{chatId}/messages")]
+        [AuthenticateFilter]
         public IEnumerable<Message> Get(int userId, int chatId)
         {
             var chat = chatRepository.GetChat(userId, chatId);
@@ -41,6 +42,7 @@ namespace SimpleChatAPI.Controllers
 
         // POST api/users/{userId}/chats/{chatId}/messages
         [Route("users/{userId}/chats/{chatId}/messages")]
+        [AuthenticateFilter]
         public HttpResponseMessage Post(int userId, int chatId, Message message)
         {
             var chat = chatRepository.GetChat(userId, chatId);

@@ -1,21 +1,13 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
-
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
-
 using SimpleChatAPI.Core;
 using SimpleChatAPI.Repository;
-
-using System;
-using System.Collections.Generic;
 using System.Linq;
-
 using System.Security.Claims;
-using System.Security.Principal;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace SimpleChatAPI.Identity
 {
@@ -24,8 +16,6 @@ namespace SimpleChatAPI.Identity
         public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] {"*"});
-
-            //var cuser = context.OwinContext.Get<AppContext>().CUsers.FirstOrDefault(u => u.EmailAddress == context.UserName);
 
             var user = context.OwinContext.Get<AppContext>().Users.FirstOrDefault(u => u.UserName == context.UserName);
             

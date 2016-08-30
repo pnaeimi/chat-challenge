@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using SimpleChatAPI.Models;
 using SimpleChatAPI.Repository;
 using System;
 using System.Collections.Generic;
@@ -7,10 +8,11 @@ using System.Web;
 
 namespace SimpleChatAPI.Core
 {
-    public class ChatUserStore: UserStore<IdentityUser>
+    public class ChatUserStore : UserStore<IdentityUser>
     {
         public ChatUserStore() : base(new AppContext())
         {
+        
         }
     }
 }

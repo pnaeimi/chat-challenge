@@ -25,21 +25,25 @@ namespace SimpleChatAPI.Controllers
         }
 
         // GET api/users
+        [AuthenticateFilter]
         public IEnumerable<User> Get()
         {
             return userRepository.GetUsers();
         }
 
         // GET api/users/5
+        [AuthenticateFilter]
         public User Get(int id)
         {
             return userRepository.Get(id);
         }
 
         // POST api/users
-        public HttpResponseMessage Post(User user)
+        [HttpPost]
+        [ActionName("register")]
+        public HttpResponseMessage Register(User user)
         {
-            if(userRepository.GetByEmail(user.EmailAddress))
+            if(userRepository.CheckByEmail(user.EmailAddress))
                 return Request.CreateErrorResponse(HttpStatusCode.Forbidden, ModelState);
 
             if (user.Password.Equals(user.Confirm))
@@ -53,6 +57,7 @@ namespace SimpleChatAPI.Controllers
         }
 
         // PUT api/users/5
+        [AuthenticateFilter]
         public HttpResponseMessage Put(int id, User user)
         {
             user.Id = id;
@@ -64,6 +69,7 @@ namespace SimpleChatAPI.Controllers
         }
 
         // DELETE api/users/5
+        [AuthenticateFilter]
         public void Delete(int id)
         {
             userRepository.Delete(id);
@@ -71,9 +77,9 @@ namespace SimpleChatAPI.Controllers
         }
         
         // Login api/users/login
-        /*
+        [HttpPost]
         [ActionName("login")]
-        public HttpResponseMessage PostLogin(User user)
+        public HttpResponseMessage Login(User user)
         {
             var existingUser = userRepository.Authenticate(user);
             if (existingUser == null)
@@ -82,9 +88,9 @@ namespace SimpleChatAPI.Controllers
             string token = Guid.NewGuid().ToString();
             existingUser.BearerToken = token;
             userRepository.Update(existingUser);
+            userRepository.Save();
             return Request.CreateResponse<User>(HttpStatusCode.Created, existingUser);
-        }
-        */
+        } 
 
         protected override void Dispose(bool disposing)
         {

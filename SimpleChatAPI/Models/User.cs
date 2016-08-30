@@ -26,5 +26,7 @@ namespace SimpleChatAPI.Models
         [System.Web.Mvc.CompareAttribute("Password")]
         public string Confirm { get; set; }
 
+        public string BearerToken { get; set; }
+    
     }
 }
