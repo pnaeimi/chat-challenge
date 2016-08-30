@@ -26,28 +26,28 @@ namespace SimpleChatAPI.Repository
         
         public IEnumerable<User> GetUsers()
         {
-            return appContext.Users.ToList();
+            return appContext.CUsers.ToList();
         }
 
         public User Get(int id)
         {
-            return appContext.Users.Find(id);
+            return appContext.CUsers.Find(id);
         }
 
         public bool GetByEmail(string emailAddress)
         {
-            return appContext.Users.Any(u => u.EmailAddress == emailAddress);
+            return appContext.CUsers.Any(u => u.EmailAddress == emailAddress);
         }
    
         public void Add(User user)
         {
-            appContext.Users.Add(user);
+            appContext.CUsers.Add(user);
         }
 
         public void Delete(int id)
         {
-            User user = appContext.Users.Find(id);
-            appContext.Users.Remove(user);
+            User user = appContext.CUsers.Find(id);
+            appContext.CUsers.Remove(user);
         }
 
         public void Update(User user)
@@ -63,7 +63,7 @@ namespace SimpleChatAPI.Repository
         public User Authenticate(User user)
         {
 
-            return appContext.Users.Where(u => u.EmailAddress == user.EmailAddress && 
+            return appContext.CUsers.Where(u => u.EmailAddress == user.EmailAddress && 
                                                u.Password == user.Password)
                                     .FirstOrDefault();
         }
